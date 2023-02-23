@@ -11,11 +11,16 @@ import Styles from "./ProductCarousel.module.css";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useSearchParams } from "react-router-dom";
 
-export default function MultiProductCarousel() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [categories, setCategories] = useState([]);
+export default function MultiProductCarousel({ handleCategories, categories }) {
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const [categories, setCategories] = useState([]);
 
   const data = [
+    {
+      image:
+        "https://m.media-amazon.com/images/G/01/goldbox/images/faceout/Alldeals_white._CB468586681_.png",
+      title: "All"
+    },
     {
       image:
         "https://assets.ajio.com/medias/sys_master/root/20211216/9VLw/61ba5599aeb26901100e8e86/heeposh_purple_floral_embroidery_flared_kurta_sets.jpg",
@@ -29,7 +34,7 @@ export default function MultiProductCarousel() {
     {
       image:
         "https://assets.ajio.com/medias/sys_master/root/20221118/PR8z/6376a1a4aeb269659c9adb5e/fiorra_maroon_round-neck_straight_kurta_suit_set.jpg",
-      title: "kurta-suit"
+      title: "kurta-suit-sets"
     },
     {
       image:
@@ -93,27 +98,34 @@ export default function MultiProductCarousel() {
     }
   ];
 
-  useEffect(() => {
-    let param = {};
+  // useEffect(() => {
+  //   let param = {};
 
-    if (categories.length) {
-      param.filter = categories;
+  //   if (categories.length) {
+  //     param.filter = categories;
+  //   }
+
+  //   console.log("ProductCarouselPage-param",param);
+
+  //   setSearchParams(param);
+  // }, [categories]);
+
+  const handleChoice = (title) => {
+    // setCategories([title]);
+    if (categories.includes(title) === false) {
+      if (title === "All") {
+        handleCategories([]);
+      } else {
+        handleCategories([...categories, title]);
+      }
     }
-
-    console.log(param);
-
-    setSearchParams(param);
-  }, [categories]);
-
-  const handleCategory = (title) => {
-    setCategories([title]);
   };
 
   return (
     <CarouselProvider
       naturalSlideWidth={100}
       naturalSlideHeight={50}
-      totalSlides={15}
+      totalSlides={16}
       visibleSlides={5}
       // isInfinity={true}
       className={Styles.CarouselProvider}
@@ -137,7 +149,7 @@ export default function MultiProductCarousel() {
               }}
             >
               <div
-                onClick={() => handleCategory(elem.title)}
+                onClick={() => handleChoice(elem.title)}
                 className={Styles.cardHolder}
                 style={{ height: "100%" }}
               >
@@ -157,4 +169,3 @@ export default function MultiProductCarousel() {
     </CarouselProvider>
   );
 }
-
