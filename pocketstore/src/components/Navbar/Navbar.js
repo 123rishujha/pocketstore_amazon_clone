@@ -2,6 +2,7 @@ import React from 'react';
 import './Navbar.css';
 //import { useGlobalContext } from '../../StateProvider';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import MainPage from "../HomePage/MainPage";
 
 function Navbar() {
   return (
