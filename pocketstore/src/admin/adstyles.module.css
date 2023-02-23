@@ -1,0 +1,16 @@
+.maindiv1{
+    border:0px solid green;
+   display: grid;
+    grid-template-columns:45% 55%;
+grid-template-rows: 100%;
+
+}
+.maindiv2{
+    border:0px solid green
+}
+.maindiv3{
+    border:0px solid blue
+}
+.imagelogo{
+    margin-bottom: 60px;
+}
