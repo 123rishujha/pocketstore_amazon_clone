@@ -16,14 +16,25 @@ const Footer1 = () => {
         m={"10px auto"}
         color={"skyblue"}
         alignItems={"center"}
-        justifyContent={'space-between'}
-        w={{base:"70%",md:"30%",lg:'20%'}}
+        justifyContent={"space-between"}
+        w={{ base: "70%", md: "30%", lg: "20%" }}
       >
-        <Text> Conditions of Use </Text>
-        <Text> Privacy Notice </Text> <Text>Help</Text>
+        <Text cursor={"pointer"} _hover={{textDecoration:"underline"}}>
+          {" "}
+          Conditions of Use{" "}
+        </Text>
+        <Text cursor={"pointer"} _hover={{textDecoration:"underline"}}>
+          {" "}
+          Privacy Notice{" "}
+        </Text>{" "}
+        <Text cursor={"pointer"} _hover={{textDecoration:"underline"}}>
+          Help
+        </Text>
       </Flex>
-      
-      <Text marginBottom={"20px"}>© 1996-2023, Amazon.com, Inc. or its affiliates</Text>
+
+      <Text marginBottom={"20px"}>
+        © 1996-2023, Amazon.com, Inc. or its affiliates
+      </Text>
     </Box>
   );
 };

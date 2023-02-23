@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Image,
@@ -9,14 +9,33 @@ import {
   FormControl,
   Text,
   Center,
+  InputGroup,
+  InputRightElement
 } from "@chakra-ui/react";
 import "./signup.css";
 import img1 from "../assets/website-logo.png"
 import { Link, useNavigate } from "react-router-dom";
 import Footer1 from "../components/Footer1";
-
+import { useDispatch } from 'react-redux'
+import { login } from "../redux/Auth/auth.actionTypes";
 const Login = () => {
-const navigate=useNavigate()
+  const[email,setEmail]=useState("");
+  const[password,setPassword]=useState("") 
+  const navigate=useNavigate()
+  const [show, setShow] =useState(false)
+  const dispatch = useDispatch()
+  
+  const handleClick = () => setShow(!show)
+
+
+ const handleUserLogin=()=>{
+  const payload={
+    email,password
+  }
+  console.log(payload);
+  dispatch(login(payload))
+  
+ }
 
 const handlesignup=()=>{
   navigate('/signup')
@@ -47,20 +66,35 @@ const handlesignup=()=>{
             </Heading>
             <FormLabel mt="10px">Email</FormLabel>
             <Input
+            required
               h={"30px"}
               borderWidth={"2px"}
               borderRadius={"3px"}
               fontSize={"13px"}
-              placeholder=""
+              placeholder="Email.."
+              type="email"
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
             />
             <FormLabel mt="10px">Password</FormLabel>
+            <InputGroup>
             <Input
+             required
               h={"30px"}
               borderWidth={"2px"}
               borderRadius={"3px"}
               fontSize={"13px"}
-              placeholder=""
+              placeholder="Password.."
+              type={show ? 'text' : 'password'}
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
             />
+             <InputRightElement mt={'-5px'} mr={'5px'}>
+        <Button h="60%" fontSize={"13px"}  onClick={handleClick}>
+          {show ? 'Hide' : 'Show'}
+        </Button>
+      </InputRightElement>
+            </InputGroup>
 
             <Button
               mt="20px"
@@ -69,6 +103,7 @@ const handlesignup=()=>{
               borderRadius={"3px"}
               w={{ base: "100%", md: "100%", lg: "100%" }}
               bg={"orange.300"}
+              onClick={handleUserLogin}
             >
               Contiune
             </Button>
