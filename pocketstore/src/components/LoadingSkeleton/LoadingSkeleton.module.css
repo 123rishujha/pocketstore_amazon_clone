@@ -1,0 +1,21 @@
+.grid {
+    height: 80%;
+    width: 80%;
+    margin: auto;
+  }
+  
+  @media screen and (min-width: 540px) and (max-width: 767px) {
+    .grid {
+      height: 80%;
+      width: 100%;
+    }
+  }
+  
+  /* medium screen */
+  @media screen and (min-width: 200px) and (max-width: 767px) {
+    .grid {
+      height: 80%;
+      width: 100%;
+    }
+  }
+  

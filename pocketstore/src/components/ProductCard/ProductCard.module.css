@@ -1,0 +1,27 @@
+.gridItem {
+    border: 0.1px solid rgba(128, 128, 128, 0.706);
+    height: 330px;
+    object-fit: contain;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .gridItem_image {
+    /* border-radius: 50%; */
+    height: 70%;
+    width: 90%;
+    margin: auto;
+  }
+  
+  .gridItem .details {
+    /* border:1px solid red; */
+    height: 20%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    padding-inline: 10px;
+  }
+
