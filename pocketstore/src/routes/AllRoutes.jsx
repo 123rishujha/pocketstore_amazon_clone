@@ -5,6 +5,8 @@ import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import MainPage from '../components/HomePage/MainPage';
 
+import SplitScreen from '../admin/adminlogin';
+import SplitScree from '../admin/adminhome';
 
 
 const AllRoutes = () => {
@@ -16,6 +18,8 @@ const AllRoutes = () => {
         <Route path='/cart' element={<h1>Cart</h1>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/adminlogin' element={<SplitScreen/>}/>
+        <Route path='/adminhome' element={<SplitScree/>}/>
     </Routes>
   )
 }
