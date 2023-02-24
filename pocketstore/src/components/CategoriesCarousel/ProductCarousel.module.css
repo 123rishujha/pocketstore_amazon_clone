@@ -1,74 +1,74 @@
 .CarouselProvider {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    align-items: center;
-    box-sizing: border-box;
-    background-color: gray;
-    overflow: hidden;
-    /* border:1px solid black; */
-  }
-  
-  /* not working styles on slide */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: rgb(124, 148, 148);
+  overflow: hidden;
+  /* border:1px solid black; */
+}
+
+/* not working styles on slide */
+.Slide {
+  height: 100%;
+  margin-top: 1%;
+}
+
+.cardHolder {
+  /* border: 1px solid red; */
+  height: 150%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  object-fit: contain;
+  color: white;
+  /* font-weight: 550; */
+}
+
+.cardHolder > img {
+  /* border: 1px solid red; */
+  border-radius: 50%;
+  height: 80%;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+.BtnPrev,
+.BtnNext {
+  position: absolute;
+  /* height:50px; */
+  top: 40%;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.BtnNext {
+  right: 0%;
+  width: 50px;
+}
+
+.BtnPrev {
+  left: 0%;
+  width: 50px;
+}
+
+@media screen and (min-width: 100px) and (max-width: 799px) {
   .Slide {
-    height: 100%;
-    margin-top: 1%;
+    margin-top: 3%;
   }
-  
-  .cardHolder {
-    /* border: 1px solid red; */
-    height: 150%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    object-fit: contain;
-    color:white;
-    /* font-weight: 550; */
+}
+
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+  .Slide {
+    margin-top: 2%;
   }
-  
-  .cardHolder > img {
-    /* border: 1px solid red; */
-    border-radius: 50%;
-    height: 80%;
-    width: 70%;
-    margin: auto;
-    margin-bottom: 0px;
-    margin-top: 5px;
-  }
-  
-  .BtnPrev,
-  .BtnNext {
-    position: absolute;
-    /* height:50px; */
-    top: 40%;
-    background-color: white;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-  }
-  
-  .BtnNext {
-    right: 0%;
-    width: 50px;
-  }
-  
-  .BtnPrev {
-    left: 0%;
-    width: 50px;
-  }
-  
-  @media screen and (min-width: 100px) and (max-width: 799px) {
-    .Slide{
-      margin-top: 3%;
-    }
-  }
-  
-  @media screen and (min-width: 800px) and (max-width: 1000px) {
-    .Slide{
-      margin-top: 2%;
-    }
-  }
+}
