@@ -8,49 +8,82 @@ import {
     Input,
     Link,
     Stack,
-    Image,
+    Image,Box,Grid, GridItem,Text,Highlight
   } from '@chakra-ui/react';
-  import Nav from './Components/Navbar';
+  import React from "react";
+  import { deleteproduct } from './api';
+import WithAction from './Components/Navbar';
   export default function SplitScree() {
+    const [data,setdata]=React.useState([]);
+    const [amount,setamount]=React.useState(0);
+const fetchdata=async()=>{
+try{
+  let res=await fetch(`https://shy-headscarf-tuna.cyclic.app/cart`);
+  let res1=await res.json();
+  setdata(res1);
+}
+catch(er){
+  console.log(er);
+}
+}
+console.log(data);
+    React.useEffect(()=>{
+fetchdata();
+},[])
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
         <>
-        <Nav/>
-      <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
-        <Flex p={8} flex={1} align={'center'} justify={'center'}>
-          <Stack spacing={4} w={'full'} maxW={'md'}>
-            <Heading fontSize={'2xl'}>Sign in to your account</Heading>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input type="password" />
-            </FormControl>
-            <Stack spacing={6}>
-              <Stack
-                direction={{ base: 'column', sm: 'row' }}
-                align={'start'}
-                justify={'space-between'}>
-                <Checkbox>Remember me</Checkbox>
-                <Link color={'blue.500'}>Forgot password?</Link>
-              </Stack>
-              <Button colorScheme={'blue'} variant={'solid'}>
-                Sign in
-              </Button>
-            </Stack>
-          </Stack>
-        </Flex>
-        <Flex flex={1}>
-          <Image
-            alt={'Login Image'}
-            objectFit={'cover'}
-            src={
-              'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
-            }
-          />
-        </Flex>
-      </Stack>
+        <WithAction/>
+     <Box>
+<Flex>
+  <Box w="25%" border={"2px solid grey"}>
+<Grid gap={"40px"} templateRows={"20% 20%"}>
+  <GridItem><Highlight query={"TOTAL FUNDS"} styles={{ px: '1', py: '1', bg: 'orange.100' }}>TOTAL FUNDS</Highlight></GridItem>
+<GridItem><Text><Highlight query={"₹"} styles={{ px: '1', py: '1', bg: 'orange.100' }}>₹</Highlight>{amount}</Text></GridItem>
+</Grid>
+  </Box>
+  <Box w="75%" border={"0px solid brown"}>
+    <Grid boxShadow={'1.5rem 0.5rem black, -0.5rem -0.5rem #ccc'} gap={"20px"} templateColumns={"auto"}>
+      <Heading>Cart Items</Heading>
+      {/* 1st */}
+{data?.map((el)=>(
+  <GridItem key={el.id}>
+ <Grid justifyContent={"space-evenly"} templateColumns={"20% 50% 20%"}>
+  <GridItem>
+    <Image w={"50%"} src={el.image} alt={"memo"}/>
+  </GridItem>
+  <GridItem>
+    <Text><Highlight query='Brand' styles={{ px: '1', py: '1', bg: 'orange.100' }}>Brand</Highlight>--{el.brand}</Text>
+    <Text><Highlight query='Name' styles={{ px: '1', py: '1', bg: 'orange.100' }}>Name</Highlight>--{el.name}</Text>
+  </GridItem>
+  <GridItem>
+  <Text><Highlight query='Price' styles={{ px: '1', py: '1', bg: 'orange.100' }}>Price</Highlight>--₹{el.price}</Text>
+  <Button onClick={async()=>{let x=await deleteproduct(el.id);fetchdata();setamount((prev)=>prev+el.price) }} colorScheme='orange'>Dispatch</Button>
+  </GridItem>
+ </Grid>
+</GridItem>
+))}
+
+{/* // 2nd */}
+
+    </Grid>
+  </Box>
+</Flex>
+     </Box>
       </>
     );
   }
+
+
