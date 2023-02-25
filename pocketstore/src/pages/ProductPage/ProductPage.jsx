@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams, useLocation, useParams } from "react-router-dom";
 
 import Styles from "./ProductPage.module.css";
 import MultiProductCarousel from "../../components/CategoriesCarousel/ProductCarousel";
@@ -21,20 +21,32 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import LoadingSkeleton from "../../components/LoadingSkeleton/LoadingSkeleton";
 import ListProducts from "../../components/ListProducts/ListProducts";
 import Filter from "../../components/Filter/Filter";
+import Pagination from "../../components/Pagination/Pagination";
 
 function ProductPage() {
   const product = useSelector((store) => store.productReducer.products);
   const loading = useSelector((store) => store.productReducer.loading);
   const dispatch = useDispatch();
-  const [categories, setCategories] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({});
+  const [categories, setCategories] = useState(
+    searchParams.getAll("category") || []
+  );
   const location = useLocation();
-  // console.log(product);
+  //pagination
+  const [active, setActive] = useState(1);
+  const [nOfProduct, setNOfProduct] = useState(9);
+
+  // console.log(location.search);
 
   // console.log("loaction", location);
 
   const handleCategories = (val) => {
     setCategories(val);
+    setActive(1);
+  };
+
+  const handleActive = (val) => {
+    setActive(val);
   };
 
   // console.log("categories", categories);
@@ -58,11 +70,14 @@ function ProductPage() {
     setSearchParams(params);
   }, [categories]);
 
+  console.log(product);
+
   return (
     <Flex flexDir="column" className={Styles.main} boxSize="border-box">
       <h1 style={{ fontSize: "30px", textAlign: "left", margin: "10px" }}>
         Today's Deals
       </h1>
+
       <Box className={Styles.carouselHolder}>
         <MultiProductCarousel
           categories={categories}
@@ -73,8 +88,22 @@ function ProductPage() {
         {/* filtes */}
         <Filter categories={categories} handleCategories={handleCategories} />
         {/* products grid/ListProducts */}
-        {loading ? <LoadingSkeleton /> : <ListProducts product={product} />}
+        {loading ? (
+          <LoadingSkeleton />
+        ) : (
+          <ListProducts
+            product={product}
+            nOfProduct={nOfProduct}
+            active={active}
+          />
+        )}
       </Flex>
+      <Pagination
+        active={active}
+        nOfProduct={nOfProduct}
+        handleActive={handleActive}
+        length={product?.length}
+      />
     </Flex>
   );
 }
