@@ -48,7 +48,7 @@ function Header() {
 
         <div className='main'>
           <div>
-          <Link>
+          <Link to="/login">
           <h2 className='header-main-h2'>Hello, Sign in</h2>
           <p className='header-main-p'> Account & Lists</p>
           </Link>

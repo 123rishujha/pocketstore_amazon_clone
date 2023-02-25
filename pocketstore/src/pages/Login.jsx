@@ -16,7 +16,7 @@ import "./signup.css";
 import img1 from "../assets/website-logo.png"
 import { Link, useNavigate } from "react-router-dom";
 import Footer1 from "../components/Footer1";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { login } from "../redux/Auth/auth.actionTypes";
 const Login = () => {
   const[email,setEmail]=useState("");
@@ -27,23 +27,24 @@ const Login = () => {
   
   const handleClick = () => setShow(!show)
 
+  const {loginRequested,loginFail,token}=useSelector((state)=>state.reducer)
 
+console.log(loginRequested,loginFail, token)
  const handleUserLogin=()=>{
   const payload={
     email,password
   }
   console.log(payload);
   dispatch(login(payload))
-  
  }
 
 const handlesignup=()=>{
   navigate('/signup')
 }
-
   return (
     <>
       <Box>
+        {loginRequested?<h1>Login.....</h1> : loginFail ? <h1>Email or passwod invalid</h1>:<h1>Login sucess</h1>}
         <Box
           cursor={"pointer"}
           m="30px auto"
