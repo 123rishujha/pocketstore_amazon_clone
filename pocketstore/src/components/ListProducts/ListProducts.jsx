@@ -4,7 +4,7 @@ import Styles from "./ListProducts.module.css";
 
 import ProductCard from "../ProductCard/ProductCard";
 
-function ListProducts({ product }) {
+function ListProducts({ product,nOfProduct,active }) {
   return (
     <Grid
       className={Styles.grid}
@@ -14,7 +14,11 @@ function ListProducts({ product }) {
         md: "repeat(3,1fr)"
       }}
     >
-      {product?.map((elem) => {
+      {product?.filter((elem,i)=>{
+        // return i>= noOfproducts && i<=noOfProduct * action;
+        return i >= nOfProduct * (active - 1) && i < nOfProduct * active
+      })
+      .map((elem) => {
         return <ProductCard key={elem.id} {...elem} />;
       })}
     </Grid>

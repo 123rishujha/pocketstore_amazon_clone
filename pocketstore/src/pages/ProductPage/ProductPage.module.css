@@ -1,11 +1,10 @@
 .main {
   width: 98vw;
   margin: auto;
-  /* border: 1px solid red; */
   box-sizing: border-box;
   padding: 5px;
-  /* border: 0.5px solid rgba(128, 128, 128, 0.877); */
   /* border: 1px solid red; */
+  background: rgba(194, 208, 209, 0.507);
 }
 
 .carouselHolder {

@@ -1,0 +1,12 @@
+.paginationMain {
+    margin: auto;
+    width: 50%;
+    gap: 3px;
+    margin: auto;
+    align-items: center;
+    /* border: 1px solid red; */
+    color: teal;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  

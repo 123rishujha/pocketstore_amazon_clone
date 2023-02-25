@@ -1,24 +1,24 @@
 .grid {
+  height: 80%;
+  width: 80%;
+  margin: auto;
+  margin-top: 0px;
+  border: 0.1px solid rgba(128, 128, 128, 0.644);
+  /* border: 1px solid red; */
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 540px) and (max-width: 767px) {
+  .grid {
     height: 80%;
-    width: 80%;
-    margin: auto;
-    /* border: 0.1px solid rgba(128, 128, 128, 0.644); */
-    /* border: 1px solid red; */
-    box-sizing: border-box;
+    width: 100%;
   }
-  
-  @media screen and (min-width: 540px) and (max-width: 767px) {
-    .grid {
-      height: 80%;
-      width: 100%;
-    }
+}
+
+/* medium screen */
+@media screen and (min-width: 200px) and (max-width: 767px) {
+  .grid {
+    height: 80%;
+    width: 100%;
   }
-  
-  /* medium screen */
-  @media screen and (min-width: 200px) and (max-width: 767px) {
-    .grid {
-      height: 80%;
-      width: 100%;
-    }
-  }
-  
+}
