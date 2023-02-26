@@ -8,10 +8,12 @@ import Footer from './components/Footer';
 export const BASEURL = "https://red-elated-capybara.cyclic.app/auth"
 
 function App() {
+  console.log(window.location.pathname);
   return (
     <div className="App">
-      <Header/>
-      {/* <Navbar1/> */}
+
+      {window.location.pathname==="/login"?<></>:window.location.pathname==="/signup"?<></>:<Header/>}
+
       <AllRoutes />
       <Footer/>
     </div>
