@@ -16,13 +16,28 @@ export const postProductAPI = async (data) => {
   return res.data;
 };
 
-export const patchProductAPI = async (id, data) => {
-  let res = await axios.patch(
-    `https://shy-headscarf-tuna.cyclic.app/products/${id}`,
-    data
-  );
-  return res.data;
-};
+// export const patchProductAPI = async (id, data) => {
+//   let res = await axios.patch(
+//     `https://shy-headscarf-tuna.cyclic.app/products/${id}`,
+//     data
+//   );
+//   return res.data;
+// };
+
+
+
+export async function patchProductAPI(id, quantity) {
+  try {
+    const response = await axios.patch(
+      `https://shy-headscarf-tuna.cyclic.app/products/${id}`,
+      { quantity }
+    );
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 
 export const deleteProductAPI = async (id) => {
   let res = await axios.delete(
@@ -30,3 +45,4 @@ export const deleteProductAPI = async (id) => {
   );
   return res.data;
 };
+
