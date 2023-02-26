@@ -99,7 +99,7 @@ class MainPage extends Component {
                             </Link>
                         ))
                     }
-                    {/* <AdvertisementOne />
+                  {/* <AdvertisementOne />
                     <AdvertisementFour />
                     <AdvertisementOne />
                     <AdvertisementOne />

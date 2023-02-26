@@ -3,6 +3,7 @@ import './Navbar.css';
 //import { useGlobalContext } from '../../StateProvider';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MainPage from "../HomePage/MainPage";
+import {Link } from 'react-router-dom';
 
 function Navbar() {
   return (
@@ -13,11 +14,11 @@ function Navbar() {
           <p>All</p>
         </div>
         <ul className="navbar__links">
-          <li className="nav__link nav__border">Today's Deals</li>
-          <li className="nav__link nav__border">Customer Service</li>
-          <li className="nav__link nav__border desktop">Books</li>
-          <li className="nav__link nav__border desktop">Export Store</li>
-          <li className="nav__link nav__border desktop">About International Delivery</li>
+          <li className="nav__link nav__border"><Link to='/products'>Today's Deals</Link></li>
+          <li className="nav__link nav__border"><Link to="/products">Customer Service</Link></li>
+          <li className="nav__link nav__border desktop"><Link to='/products'>Books</Link></li>
+          <li className="nav__link nav__border desktop"><Link to="/products">Export Store</Link></li>
+          <li className="nav__link nav__border desktop"><Link to="/products">About International Delivery</Link></li>
         </ul>
       </div>
     </div>

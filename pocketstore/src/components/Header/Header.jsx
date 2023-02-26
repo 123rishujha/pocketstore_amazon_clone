@@ -1,14 +1,25 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/heading-has-content */
+import React, { useState } from 'react';
 import './Header.css';
 import logo from '../../media/pocketstore.png';
 import { Link} from 'react-router-dom';
 import usaIcon from '../../media/India.webp';
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
-import SearchIcon from '@mui/icons-material/Search';
+// import SearchIcon from '@mui/icons-material/Search';
+import { SearchIcon } from '@chakra-ui/icons';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Navbar from '../Navbar/Navbar';
+import {HamburgerIcon} from "@chakra-ui/icons"
+import SideDrawer from '../SideDrawer';
 
 function Header() {
+const [text,setText]=useState("")
+
+const handleinputempty=()=>{
+  setText("")
+}
+
+
   return (
     <>
     <div className="header">
@@ -36,8 +47,10 @@ function Header() {
               <option value="Beauty">Beauty</option>
               <option value="Clothes">Clothes</option>
             </select>  
-        <input type="text" className="header__searchInput" />
-        <SearchIcon className="header__searchIcon" />
+        <input type="text" value={text} onChange={(e)=>setText(e.target.value)} className="header__searchInput"  />
+       <button  className="header__searchIcon" onClick={handleinputempty}>
+        <SearchIcon />
+       </button>
       </div>
       <div className="header__nav">
         <div className="header__border languageBorder">
@@ -54,14 +67,14 @@ function Header() {
           </Link>
           </div> 
           <div>
-          <Link>
-          <h2 className='header-main-h2'>Returns</h2>
-          <p className='header-main-p'>& Orders</p>
+          <Link to="/adminlogin">
+          <h2 className='header-main-h2'></h2>
+          <p className='header-main-p'>Admin</p>
           </Link>
           </div>
    
         </div>
-
+           <div className='hideSearchIcon'> <SearchIcon /></div>
         <Link to="/" className="header__basket" >
           <div className="header__border">
             <div className="header__optionBasket">
@@ -71,6 +84,9 @@ function Header() {
             </div>
           </div>
         </Link>
+        <div className='sidedrawer'>
+        <SideDrawer/>
+        </div>
       </div>
     </div>
     <Navbar/>
