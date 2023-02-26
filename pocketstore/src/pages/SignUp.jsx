@@ -16,7 +16,7 @@ import {
 import { Link } from "react-router-dom";
 import "./signup.css";
 import img from "../assets/website-logo.png"
-import Footer1 from "../components/Footer1";
+// import Footer1 from "../components/Footer1";
 import { useDispatch } from 'react-redux'
 import { signup } from "../redux/Auth/auth.actionTypes";
 
@@ -178,7 +178,7 @@ const handelSubmituser=()=>{
           </FormControl>
         </Box>
       </Box>
-      <Footer1 />
+      {/* <Footer1 /> */}
     </>
   );
 };
