@@ -6,9 +6,10 @@ import Header from "./components/Header/Header"
 export const BASEURL = "https://red-elated-capybara.cyclic.app/auth"
 
 function App() {
+  console.log(window.location.pathname);
   return (
     <div className="App">
-      <Header/>
+      {window.location.pathname==="/login"?<></>:window.location.pathname==="/signup"?<></>:<Header/>}
       <AllRoutes />
     </div>
   );

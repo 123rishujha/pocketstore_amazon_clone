@@ -12,7 +12,7 @@ import {
   } from '@chakra-ui/react';
   import React from "react";
   import { deleteproduct } from './api';
-import WithAction from './Components/Navbar';
+
   export default function SplitScree() {
     const [data,setdata]=React.useState([]);
     const [amount,setamount]=React.useState(0);
@@ -32,20 +32,9 @@ fetchdata();
 },[])
 
 
-
-
-
-
-
-
-
-
-
-
-
-    return (
+return (
         <>
-        <WithAction/>
+      
      <Box>
 <Flex>
   <Box w="25%" border={"2px solid grey"}>
