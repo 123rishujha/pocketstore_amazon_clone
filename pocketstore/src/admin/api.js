@@ -51,4 +51,15 @@ headers:{
     // let res1=await res.json();
     return res
     // console.log(res1);
+};
+export const login=async(obj)=>{
+let res=await fetch(`https://reqres.in/api/login`,{
+method:"POST",
+body:JSON.stringify(obj),
+headers:{
+    "Content-Type":"application/json"
+}
+});
+let res1=await res.json();
+return res1.token
 }

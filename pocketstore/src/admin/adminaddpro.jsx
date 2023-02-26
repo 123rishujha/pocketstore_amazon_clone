@@ -27,9 +27,9 @@ settext(text);
          console.log(x);
     }
   return (
-    <Box border={'2px solid red'} >
+    <Box border={'0px solid red'} >
 <Text fontSize={'2xl'} color={'orange'}>Add Products</Text>
-<Stack border={'1px solid blue'} margin={"auto"} spacing={4} w={'full'} maxW={'md'}>
+<Stack border={'0px solid blue'} margin={"auto"} spacing={4} w={'full'} maxW={'md'}>
             {/* <Heading fontSize={'2xl'} justify={'left'} align={'left'}>Sign in</Heading> */}
             <form action="submit" onSubmit={(e)=>e.preventDefault()}>
             <FormControl id="image">

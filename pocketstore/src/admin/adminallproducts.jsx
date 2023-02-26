@@ -28,7 +28,7 @@ console.log(data);
   <WithAction/>
 <Box>
 <Flex>
-    <Box border={"2px solid grey"} w={"30%"}> 
+    <Box border={"0px solid grey"} w={"30%"}> 
     
     </Box>
     <Box>

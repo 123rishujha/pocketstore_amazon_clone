@@ -10,21 +10,43 @@ import {
     Stack,
     Image,Box
   } from '@chakra-ui/react';
+  import React from 'react';
+  import { login } from './api';
+  import { useNavigate } from 'react-router-dom';
   import styles from "./adstyles.module.css"
   export default function SplitScreen() {
+    const navigate=useNavigate();
+const [log,setlog]=React.useState({"email":"","password":""});
+
+const handlechange=(e)=>{
+log[e.target.name]=e.target.value;
+setlog(log);
+}
+const handlesubmit=async()=>{
+console.log(log);
+  let x=await login(log);
+  console.log(x);
+  // settoken(x);
+  if(x){
+    navigate("/adminallprod")
+  }
+}
+
+
     return (
       <Box minH={'96vh'} className={styles.maindiv1}>
         <div className={styles.maindiv2}  p={8} flex={1} align={'center'} justify={'center'}>
         <Image className={styles.imagelogo} src={'https://thumbs2.imgbox.com/31/49/k3GMkSl2_t.png'} alt={'memo'}/>
           <Stack border={'0px solid red'} spacing={4} w={'full'} maxW={'md'}>
-            <Heading fontSize={'2xl'} justify={'left'} align={'left'}>Sign in</Heading>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+            <Heading fontSize={'2xl'} justify={'left'} align={'left'}>Sign in as Admin</Heading>
+            <form onSubmit={(e)=>e.preventDefault()}>
+            <FormControl isRequired id="email">
+              <FormLabel >Email address</FormLabel>
+              <Input type="email" placeholder='email' name='email' onChange={(e)=>handlechange(e)}/>
             </FormControl>
-            <FormControl id="password">
+            <FormControl isRequired id="password">
               <FormLabel>Password</FormLabel>
-              <Input type="password" />
+              <Input type="password" placeholder='password' name='password' onChange={(e)=>handlechange(e)}/>
             </FormControl>
             <Stack spacing={6}>
               <Stack
@@ -34,10 +56,15 @@ import {
                 <Checkbox>Remember me</Checkbox>
                 <Link color={'blue.500'}>Forgot password?</Link>
               </Stack>
-              <Button colorScheme={'orange'} variant={'solid'}>
+              {/* <Button type='submit' colorScheme={'orange'} variant={'solid'} onClick={handlesubmit}>
+                Sign in
+              </Button> */}
+            </Stack>
+            <Button type='submit' colorScheme={'orange'} variant={'solid'} onClick={handlesubmit}>
                 Sign in
               </Button>
-            </Stack>
+            </form>
+         
           </Stack>
         </div>
         <div className={styles.maindiv3} >
