@@ -1,2 +1,2 @@
-# cynical-chicken-9400
-This is a team project 
+Project Name - PocketStore (Clone of Amazon)
+Team Members-

@@ -1,0 +1,59 @@
+.detailsBox {
+    border: 1px solid gray;
+    width: 99vw;
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  .detailsContainer {
+    /* border:1px solid green; */
+    width: 100%;
+  }
+  
+  .productImage {
+    /* border:1px solid black; */
+    width: 40%;
+    /* max-height: 400px; */
+  }
+  
+  .textBox {
+    width: 40%;
+    font-size: 30px;
+    padding: 10px;
+    /* border: 1px solid rgb(192, 190, 190); */
+  }
+  
+  .textDetails {
+    font-size: 15px;
+  }
+  
+  .payment {
+    width: 20%;
+    /* border:1px solid red; */
+    padding: 10px;
+    text-align: left;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  .pay_btn {
+    background-color: rgb(255, 255, 0);
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    color: black;
+  }
+  
+  @media screen and (min-width: 200px) and (max-width: 768px) {
+    .productImage {
+      width: 100%;
+    }
+    .textBox {
+      width: 100%;
+    }
+    .payment {
+      width: 100%;
+    }
+  }
+  
