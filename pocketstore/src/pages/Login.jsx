@@ -36,6 +36,8 @@ console.log(loginRequested,loginFail, token)
   }
   console.log(payload);
   dispatch(login(payload))
+  alert("login successfully")
+  navigate('/')
  }
 
 const handlesignup=()=>{

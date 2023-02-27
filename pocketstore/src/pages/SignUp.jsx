@@ -13,7 +13,7 @@ import {
   FormHelperText,
   InputRightElement
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./signup.css";
 import img from "../assets/website-logo.png"
 // import Footer1 from "../components/Footer1";
@@ -27,6 +27,7 @@ const SignUp = () => {
   const[mobile_no,setMobileNo]=useState('');
   const[password,setPassword]=useState('');
   const [show, setShow] =useState(false)
+  const navigate=useNavigate()
   const handleClick = () => setShow(!show)
 
 
@@ -37,6 +38,8 @@ const handelSubmituser=()=>{
   }
   console.log(payload);
   dispatch(signup(payload))
+  alert("signup successfully")
+  navigate("/login")
   // console.log(name,email,mobile_no,password)
 }
 
