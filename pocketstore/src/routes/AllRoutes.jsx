@@ -11,6 +11,8 @@ import Adminaddpro from "../admin/adminaddpro";
 import Adminallproducts from "../admin/adminallproducts";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 
+// landing fix
+
 const AllRoutes = () => {
   return (
     <Routes>
