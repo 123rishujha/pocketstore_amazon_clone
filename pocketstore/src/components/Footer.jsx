@@ -26,7 +26,7 @@ const ListHeader = ({ children }) => {
 
 export default function Footer() {
   return (
-    <Box bg={"#232F3E"} color={"white"}>
+    <Box bg={"#232F3E"} color={"white"} marginTop="20px">
       <Container as={Stack} maxW={"6xl"} py={10}>
         <SimpleGrid columns={{ base: 2, sm: 2, md: 4 }} spacing={8}>
           <Stack align={"flex-start"}>
@@ -42,7 +42,6 @@ export default function Footer() {
             <Link href={"#"}>Facebook</Link>
             <Link href={"#"}>Twitter</Link>
             <Link href={"#"}>Instagram</Link>
-            
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Make Monkey with US</ListHeader>
@@ -70,14 +69,14 @@ export default function Footer() {
           _before={{
             content: '""',
             borderBottom: "1px solid",
-          
+
             flexGrow: 1,
             mr: 8,
           }}
           _after={{
             content: '""',
             borderBottom: "1px solid",
-           
+
             flexGrow: 1,
             ml: 8,
           }}
