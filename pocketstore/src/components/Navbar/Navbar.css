@@ -12,6 +12,7 @@
 
 .navbar__left {
   display: flex;
+  cursor: pointer;
 }
 
 .navbar__links {
