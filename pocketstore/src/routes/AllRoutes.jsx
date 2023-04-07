@@ -10,6 +10,7 @@ import SplitScreen from "../admin/adminlogin";
 import Adminaddpro from "../admin/adminaddpro";
 import Adminallproducts from "../admin/adminallproducts";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
+import Cart from "../redux/cart/Cart";
 
 // landing fix
 
@@ -19,7 +20,7 @@ const AllRoutes = () => {
       <Route path="/" element={<Homepage />} />
       <Route path="/products" element={<ProductPage />} />
       <Route path="/products/:id" element={<ProductDetails />} />
-      <Route path="/cart" element={<h1>Cart</h1>} />
+      <Route path="/cart" element={<Cart/>} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/adminlogin" element={<SplitScreen />} />

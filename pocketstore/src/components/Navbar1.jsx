@@ -1,100 +1,106 @@
-// import {
-//   Box,
-//   Image,
-//   Input,
-//   InputRightElement,
-//   InputLeftElement,
-//   InputGroup,
-//   Select,
-//   Button,
-// } from "@chakra-ui/react";
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import logo from "../media/pocketstore.png";
-// import {SearchIcon} from "@chakra-ui/icons"
-// import usaIcon from '../media/India.webp';
+import {
+  Box,
+  Image,
+  Input,
+  InputRightElement,
+  InputGroup,
+  Text,
+} from "@chakra-ui/react";
+import { BiUserCircle } from "react-icons/bi";
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../media/pocketstore.png";
+import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import { HiOutlineShoppingCart } from "react-icons/hi";
+import usaIcon from "../media/India.webp";
+import Navbar2 from "./Navbar2";
 
-// const Navbar1 = () => {
-//   return (
-//     <>
-//       <Box
-//         display={"flex"}
-//         w={{ base: "100%", md: "100%", lg: "100%" }}
-//         position={"sticky"}
-//         color={"white"}
-//        justifyContent={{base:"",md:"" ,lg:"space-between"}}
-//         alignItems={"center"}
-//         top={"0"}
-//         bg={"#131921"}
-//         marginBottom={'0px'}
-//         padding={'10px'}
-//       >
-//         <Box w={{ base: "20%", md: "10%", lg: "25%" }}>
-//           <Link>
-//             <Image src={logo} alt="" />
-//           </Link>
-//         </Box>
-//       <Box w={{ base: "50%", md: "40%", lg: "80%" }}
-//        borderRadius={"5px"} borderWidth={'1px'} height={'40px'} bg={'white'}
-//        display={"flex"} >
-// <Box>
-          
-//   <Select borderRadius={"5px 0px 0px 5px"} color={'black'} placeholder={"All"}>
-//     <option value="option1">Option 1</option>
-//     <option value="option2">Option 2</option>
-//     <option value="option3">Option 3</option>
-//     <option value="option1">Option 1</option>
-//     <option value="option2">Option 2</option>
-//     <option value="option3">Option 3</option>
-//     <option value="option1">Option 1</option>
-//     <option value="option2">Option 2</option>
-//     <option value="option3">Option 3</option>
-//     <option value="option1">Option 1</option>
-//     </Select>
-// </Box>
-//     <Input border={'none'} _hover={'none'}borderRadius={'0px'} type="text"/>
-//     <button style={{color:"black",backgroundColor:"#febd69",padding:"0px 17px",borderRadius:"0 5px 5px 0"}}><SearchIcon/></button>
-//       </Box>
-//             <Box>
-//          <Box w={{ base: "", md: "", lg: "3%" }}>
-//             <Image src={usaIcon} alt=""/>
-//          </Box>
-//          </Box>
+const Navbar1 = () => {
+  return (
+    <>
+      <Box
+        display={"flex"}
+        w={{ base: "100%", md: "100%", lg: "100%" }}
+        position={"sticky"}
+        color={"white"}
+        justifyContent={{
+          base: "space-around",
+          md: "space-around",
+          lg: "space-around",
+        }}
+        alignItems={"center"}
+        top={"0"}
+        bg={"#131921"}
+        marginBottom={"0px"}
+        padding={"5px"}
+        zIndex={2}
+      >
+        <Box w={{ base: "13%", md: "6%", lg: "3.5%" }} _hover={{borderWidth:"1px"}}>
+          <Link to="/">
+            <Image src={logo} alt="" />
+          </Link>
+        </Box>
+        <InputGroup
+          bg={"white"}
+          color={"black"}
+          w={{ base: "50%", md: "45%", lg: "60%" }}
+          //  h={{base:"20px"}}
+          borderRadius={"5px"}
+        >
+          <Input
+            h={{ base: "30px", md: "40px", lg: "40px" }}
+            border="none"
+            _hover={{ border: "none" }}
+            type="text"
+            placeholder="Search Amazon.in"
+            borderRadius={"5px"}
+          />
+          <InputRightElement
+            borderRadius={"0px 5px 5px 0px"}
+            h={"full"}
+            m={"0 0px"}
+            bg={"#febd69"}
+          >
+            <SearchIcon />
+          </InputRightElement>
+        </InputGroup>
 
-//       </Box>
-//     </>
-//   );
-// };
+        <Image
+          src={usaIcon}
+          alt=""
+          display={{ lg: "flex", md: "", base: "none" }}
+          w={{ base: "4%", md: "5%", lg: "2%" }}
+        />
 
-// export default Navbar1;
+        <Box
+          display={{ lg: "flex", md: "", base: "none" }}
+          gap={"55px"}
+          fontSize={"15px"}
+        >
+          <Link to="/login"  _hover={{borderWidth:"1px"}}>
+            <BiUserCircle fontSize={"25px"} />{" "}
+            <Text fontSize={"10px"}>Sign in</Text>
+          </Link>
+          <Link to="/adminlogin">
+            <MdOutlineAdminPanelSettings fontSize={"25px"} />
+            <Text fontSize={"10px"}>Admin</Text>
+          </Link>
+        </Box>
+        <Box
+          display={"flex"}
+          alignItems={"center"}
+          gap={{ md: "20px", base: "10px" }}
+        >
+          <Link>
+            <HiOutlineShoppingCart fontSize={"30px"} />
+          </Link>
+         
+        </Box>
+      </Box>
+      <Navbar2/>
+    </>
+  );
+};
 
-
-// <InputGroup
-// bg={"white"}
-// color={"black"}
-// w={{ base: "50%", md: "40%", lg: "190%" }}
-// display={{base:"none",md:"block"}}
-// p={"0 20px"}
-// borderRadius={"5px"} 
-// 
-// <InputLeftElement h={"full"} bg={"white"} borderRadius={"5px 0px 0px 5px"}>
-//   <Select borderRadius={"5px 0px 0px 5px"} placeholder={"All"}>
-//     <option value="option1">Option 1</option>
-//     <option value="option2">Option 2</option>
-//     <option value="option3">Option 3</option>
-//     <option value="option1">Option 1</option>
-//     <option value="option2">Option 2</option>
-//     <option value="option3">Option 3</option>
-//     <option value="option1">Option 1</option>
-//     <option value="option2">Option 2</option>
-//     <option value="option3">Option 3</option>
-//     <option value="option1">Option 1</option>
-
-//   </Select>
-// </InputLeftElement>
-// <Input type="text" placeholder="Search Amazon.in" borderRadius={"0px"} />
-// <InputRightElement borderRadius={"0px 5px 5px 0px"} h={"full"} m={'0 0px'} bg={'#febd69'}><SearchIcon/></InputRightElement>
-// </InputGroup>
-
-
-// bg={'#febd69'} color={'black'}
+export default Navbar1;
