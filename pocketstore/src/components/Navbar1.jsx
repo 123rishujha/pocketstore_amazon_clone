@@ -92,7 +92,7 @@ const Navbar1 = () => {
           alignItems={"center"}
           gap={{ md: "20px", base: "10px" }}
         >
-          <Link>
+          <Link to='/cart'>
             <HiOutlineShoppingCart fontSize={"30px"} />
           </Link>
          

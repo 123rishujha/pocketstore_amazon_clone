@@ -10,7 +10,8 @@ import SplitScreen from "../admin/adminlogin";
 import Adminaddpro from "../admin/adminaddpro";
 import Adminallproducts from "../admin/adminallproducts";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
-import Cart from "../redux/cart/Cart";
+import Cart from "../pages/cart/Cart";
+import CheckOut from "../pages/Checkout/CheckOut";
 
 // landing fix
 
@@ -27,6 +28,7 @@ const AllRoutes = () => {
       <Route path="/Orders" element={<Splitscree />} />
       <Route path="/Add Products" element={<Adminaddpro />} />
       <Route path="/adminallprod" element={<Adminallproducts />} />
+      <Route path='/checkout' element={<CheckOut/>}/>
     </Routes>
   );
 };
