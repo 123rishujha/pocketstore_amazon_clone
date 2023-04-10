@@ -1,6 +1,6 @@
 .detailsBox {
-    border: 1px solid gray;
-    width: 99vw;
+    /* border: 1px solid gray; */
+    width: 90vw;
     margin: auto;
     margin-top: 20px;
   }
@@ -8,10 +8,17 @@
   .detailsContainer {
     /* border:1px solid green; */
     width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    gap:10px;
+   
   }
   
   .productImage {
     /* border:1px solid black; */
+    border-radius: 10px;
+    
+    padding: 5px;
     width: 40%;
     /* max-height: 400px; */
   }
@@ -20,11 +27,14 @@
     width: 40%;
     font-size: 30px;
     padding: 10px;
+    border-radius: 10px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
     /* border: 1px solid rgb(192, 190, 190); */
   }
   
   .textDetails {
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: 500;
   }
   
   .payment {
@@ -38,7 +48,7 @@
   }
   
   .pay_btn {
-    background-color: rgb(255, 255, 0);
+    /* background-color: rgb(233, 165, 17); */
     width: 100%;
     margin-top: 10px;
     border-radius: 10px;

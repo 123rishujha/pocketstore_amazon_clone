@@ -6,37 +6,63 @@ import {
   Box,
   Flex,
   Image,
-  Select,
+  useToast,
   Button,
   Text,
-  Heading
+  Heading,
 } from "@chakra-ui/react";
 
 import { getProducts } from "../../redux/products/product.actions";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Styles from "./ProductDetails.module.css";
+import axios from "axios";
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
-  // console.log(id);
+  console.log(id);
   const dispatch = useDispatch();
   const products = useSelector((store) => store.productReducer.products);
   // console.log(products);
   const data = products?.find((elem) => elem.id === Number(id));
   // const [qtn, setQtn] = React.useState(data?.quantity);
+  const toast = useToast();
+
+  const handlecart = () => {
+    axios
+      .post(`https://shy-headscarf-tuna.cyclic.app/cart`, data)
+      .then(({ data }) => {
+        console.log(data);
+        toast({
+          title: "item has added to cart.",
+          // description: "We've created your account for you.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        toast({
+          title: "item has added to cart.",
+          // description: "We've created your account for you.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+       
+      });
+  };
 
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
-
-  console.log(data);
 
   const handleChange = (e) => {
     let quantity = Number(e.target.value);
     dispatch(updateProducts(id, quantity));
   };
 
-  // console.log(data);
   return (
     <Box className={Styles.detailsBox}>
       {data && (
@@ -111,14 +137,14 @@ const ProductDetails = () => {
               </select>
             </Flex>
             <Button
-              onClick={() => alert("item has added to cart")}
               className={Styles.pay_btn}
               colorScheme="orange"
+              onClick={() => handlecart()}
             >
               Add to Cart
             </Button>
             <Button
-              onClick={() => alert("order has Placed")}
+              onClick={() => navigate("/checkOut")}
               className={Styles.pay_btn}
               colorScheme="orange"
             >

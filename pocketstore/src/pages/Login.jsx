@@ -10,38 +10,49 @@ import {
   Text,
   Center,
   InputGroup,
-  InputRightElement
+  InputRightElement,
 } from "@chakra-ui/react";
 import "./signup.css";
-import img1 from "../assets/website-logo.png"
+import axios from "axios";
+import img1 from "../assets/website-logo.png";
+import { useToast } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
-// import Footer1 from "../components/Footer1";
-import { useDispatch, useSelector } from 'react-redux'
-import { login } from "../redux/Auth/auth.actionTypes";
 const Login = () => {
-  const[email,setEmail]=useState("");
-  const[password,setPassword]=useState("") 
-  const navigate=useNavigate()
-  const [show, setShow] =useState(false)
-  const dispatch = useDispatch()
-  
-  const handleClick = () => setShow(!show)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
+  const toast = useToast();
+  const handleClick = () => setShow(!show);
+  const navigate = useNavigate();
 
-  const {loginRequested,loginFail,token}=useSelector((state)=>state.reducer)
+  const handlelogin = async (e) => {
+    e.preventDefault();
+    let payload = { email, password };
+    try {
+      await axios
+        .post(`https://black-mussel-fez.cyclic.app/user/login`, payload)
+        .then((res) => {
+          navigate("/");
+          toast({
+            title: "Login Successful!.",
+            status: "success",
+            duration: 2000,
+            isClosable: true,
+          });
+          console.log(res.data)
+          localStorage.setItem("item",JSON.stringify(res.data.token))
+        });
+    } catch (err) {
+      console.log(err);
+      toast({
+        title: "Login Failed.",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+  };
 
-console.log(loginRequested,loginFail, token)
- const handleUserLogin=()=>{
-  const payload={
-    email,password
-  }
-  console.log(payload);
-  dispatch(login(payload))
- }
-
-const handlesignup=()=>{
-  // alert("signup successfully")
-  navigate('/signup')
-}
   return (
     <>
       <Box>
@@ -63,52 +74,55 @@ const handlesignup=()=>{
           borderRadius="5px"
         >
           <FormControl>
-            <Heading fontWeight={"400"} textAlign="left" fontSize={"30px"}>
-              Sign in
-            </Heading>
-            <FormLabel mt="10px">Email</FormLabel>
-            <Input
-            required
-              h={"30px"}
-              borderWidth={"2px"}
-              borderRadius={"3px"}
-              fontSize={"13px"}
-              placeholder="Email.."
-              type="email"
-              value={email}
-              onChange={(e)=>setEmail(e.target.value)}
-            />
-            <FormLabel mt="10px">Password</FormLabel>
-            <InputGroup>
-            <Input
-             required
-              h={"30px"}
-              borderWidth={"2px"}
-              borderRadius={"3px"}
-              fontSize={"13px"}
-              placeholder="Password.."
-              type={show ? 'text' : 'password'}
-              value={password}
-              onChange={(e)=>setPassword(e.target.value)}
-            />
-             <InputRightElement mt={'-5px'} mr={'5px'}>
-        <Button h="60%" fontSize={"13px"}  onClick={handleClick}>
-          {show ? 'Hide' : 'Show'}
-        </Button>
-      </InputRightElement>
-            </InputGroup>
+            <form action="" onSubmit={handlelogin}>
+              <Heading fontWeight={"400"} textAlign="left" fontSize={"30px"}>
+                Sign in
+              </Heading>
+              <FormLabel mt="10px">Email</FormLabel>
+              <Input
+                required
+                h={"30px"}
+                borderWidth={"2px"}
+                borderRadius={"3px"}
+                fontSize={"13px"}
+                placeholder="Email.."
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <FormLabel mt="10px">Password</FormLabel>
+              <InputGroup>
+                <Input
+                  required
+                  h={"30px"}
+                  borderWidth={"2px"}
+                  borderRadius={"3px"}
+                  fontSize={"13px"}
+                  placeholder="Password.."
+                  type={show ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <InputRightElement mt={"-5px"} mr={"5px"}>
+                  <Button h="60%" fontSize={"13px"} onClick={handleClick}>
+                    {show ? "Hide" : "Show"}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
 
-            <Button
-              mt="20px"
-              border={"1px black solid"}
-              h={"30px"}
-              borderRadius={"3px"}
-              w={{ base: "100%", md: "100%", lg: "100%" }}
-              bg={"orange.300"}
-              onClick={handleUserLogin}
-            >
-              Contiune
-            </Button>
+              <Button
+                mt="20px"
+                border={"1px black solid"}
+                h={"30px"}
+                borderRadius={"3px"}
+                w={{ base: "100%", md: "100%", lg: "100%" }}
+                bg={"orange.300"}
+                // onClick={handleUserLogin}
+                type="submit"
+              >
+                Contiune
+              </Button>
+            </form>
           </FormControl>
           <Text
             mt="15px"
@@ -126,18 +140,18 @@ const handlesignup=()=>{
             Need help?
           </Link>
         </Box>
-     
-          <Text
-            fontSize={{ base: "12px", md: "12px", lg: "11px" }}
-            fontWeight="500"
-            textAlign={"center"}
-          >
-            New to Amazon
-          </Text>
-        
+
+        <Text
+          fontSize={{ base: "12px", md: "12px", lg: "11px" }}
+          fontWeight="500"
+          textAlign={"center"}
+        >
+          New to Amazon
+        </Text>
+
         <Center>
           <Button
-          onClick={handlesignup}
+            // onClick={handlesignup}
             m="15px 0 20px 0"
             border={"1px solid black"}
             w={{ base: "73%", md: "40%", lg: "25%" }}

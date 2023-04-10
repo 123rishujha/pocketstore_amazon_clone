@@ -10,7 +10,7 @@ import { BiUserCircle } from "react-icons/bi";
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../media/pocketstore.png";
-import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { SearchIcon} from "@chakra-ui/icons";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import usaIcon from "../media/India.webp";

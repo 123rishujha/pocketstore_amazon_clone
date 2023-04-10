@@ -3,7 +3,7 @@ import AllRoutes from "./routes/AllRoutes";
 import Footer from "./components/Footer";
 import Navbar1 from "./components/Navbar1";
 
-export const BASEURL = "https://red-elated-capybara.cyclic.app/auth";
+export const BASEURL = "https://black-mussel-fez.cyclic.app/user";
 
 function App() {
   console.log(window.location.pathname);

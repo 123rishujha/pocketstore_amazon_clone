@@ -36,10 +36,6 @@ function ProductPage() {
   const [active, setActive] = useState(1);
   const [nOfProduct, setNOfProduct] = useState(9);
 
-  // console.log(location.search);
-
-  // console.log("loaction", location);
-
   const handleCategories = (val) => {
     setCategories(val);
     setActive(1);
@@ -49,9 +45,6 @@ function ProductPage() {
     setActive(val);
   };
 
-  // console.log("categories", categories);
-
-  //geting products;
   useEffect(() => {
     let getProductParams = {
       params: {
