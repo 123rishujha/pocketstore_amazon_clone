@@ -1,8 +1,18 @@
 import HomeGrid from "../../components/HomeGrid/HomeGrid";
 import MainCarousel from "../../components/MainCarousel/MainCarousel";
 import Styles from "./Homepage.module.css";
+import { useEffect } from "react";
+
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../redux/products/product.actions";
 
 function Homepage() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
   const array = [
     "https://m.media-amazon.com/images/I/71tIrZqybrL._SX3000_.jpg",
     "https://m.media-amazon.com/images/I/61TD5JLGhIL._SX3000_.jpg",
