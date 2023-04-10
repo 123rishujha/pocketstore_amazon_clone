@@ -16,9 +16,8 @@ import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import usaIcon from "../media/India.webp";
 import Navbar2 from "./Navbar2";
+import style from "./navbar.module.css"
 import { useThrottle } from "use-throttle";
-
-//import redux functions
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../redux/products/product.actions";
 
@@ -180,10 +179,16 @@ const Navbar1 = () => {
           gap={"55px"}
           fontSize={"15px"}
         >
+          <Box className={style.sign}>
+          <Link to="/login"  _hover={{borderWidth:"1px"}} >
+            <BiUserCircle fontSize={"25px"} />
           <Link to="/login" _hover={{ borderWidth: "1px" }}>
             <BiUserCircle fontSize={"25px"} />{" "}
             <Text fontSize={"10px"}>Sign in</Text>
+            
           </Link>
+          <Box className={style.log} ><Text color={"black"}>Logout</Text></Box>
+          </Box>
           <Link to="/adminlogin">
             <MdOutlineAdminPanelSettings fontSize={"25px"} />
             <Text fontSize={"10px"}>Admin</Text>
