@@ -53,6 +53,10 @@ const Login = () => {
     }
   };
 
+
+  const handlesignupRoute=()=>{
+    navigate("/signup")
+  }
   return (
     <>
       <Box>
@@ -151,7 +155,7 @@ const Login = () => {
 
         <Center>
           <Button
-            // onClick={handlesignup}
+            onClick={handlesignupRoute}
             m="15px 0 20px 0"
             border={"1px solid black"}
             w={{ base: "73%", md: "40%", lg: "25%" }}
