@@ -54,12 +54,12 @@ const handelcheckout=()=>{
 
 // ===============quantity==========================
 const handlequantityde=()=>{
-  // setQuantity(quantity-1)
+  setQuantity(quantity-1)
   // quantity--
 }
 // console.log(quantity)
 const handlequantityin=()=>{
-// setQuantity(quantity+1)
+setQuantity(quantity+1)
 //   quantity++
 }
   return (
@@ -114,8 +114,8 @@ const handlequantityin=()=>{
       gap={"10px"}
     >
       {" "}
-      <Button onClick={handlequantityde}>-</Button>
-      <Text>{el.quantity}</Text>
+      <Button _disabled={quantity===1} onClick={handlequantityde}>-</Button>
+      <Text>{quantity}</Text>
       <Button onClick={handlequantityin}>+</Button>
     </Box>
     <Box

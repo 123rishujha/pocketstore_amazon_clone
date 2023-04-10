@@ -3,7 +3,7 @@
   width: 80%;
   margin: auto;
   margin-top: 0px;
-  border: 0.1px solid rgba(128, 128, 128, 0.644);
+  border-top: 0.1px solid rgba(128, 128, 128, 0.644);
   /* border: 1px solid red; */
   box-sizing: border-box;
 }

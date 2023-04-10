@@ -77,7 +77,7 @@ function ProductPage() {
           handleCategories={handleCategories}
         />
       </Box>
-      <Flex className={Styles.bodyContainer}>
+      <Flex className={Styles.bodyContainer} gap="10px">
         {/* filtes */}
         <Filter categories={categories} handleCategories={handleCategories} />
         {/* products grid/ListProducts */}
