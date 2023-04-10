@@ -22,7 +22,7 @@ Chakra UI<br>
 
 <h1>Tech Stacks (Backend)</h1>
 Express<br>
-Mongosse<br>
+Mongoose<br>
 Josnwebtoken<br>
 Bcrypt<br>
 Cors<br>
