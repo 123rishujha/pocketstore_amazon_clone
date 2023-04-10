@@ -12,88 +12,131 @@ import {
 } from "@chakra-ui/react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import swal from "sweetalert";
-import React from "react";
+import {useDispatch,useSelector}from "react-redux";
+import { useEffect, useState } from "react";
+import { appendCart, deletedata } from "../../redux/cart/cart.action";
+import axios from "axios";
+import {useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const handledelete = async () => {
-    const willDelete = await swal({
-      title: "Are you sure?",
-      text: "Are you sure that you want to delete this product ?",
-      icon: "warning",
-      dangerMode: true,
-    });
+const dispatch=useDispatch();
+const [quantity,setQuantity]=useState(1)
+const {cartData}=useSelector((store)=>store.cartReducers)
+const navigate=useNavigate();
+useEffect(()=>{
+dispatch(appendCart())
 
-    if (willDelete) {
-      swal("Deleted!", "Your imaginary file has been deleted!", "success");
+},[dispatch])
+console.log(cartData);
+const handelcheckout=()=>{
+  navigate("/checkout")
+}
+
+  const handleremove = async (id) => {
+
+    try{
+      const datade=await axios.delete(`https://shy-headscarf-tuna.cyclic.app/cart/?${id}`)
+      console.log(datade)
+      cartData()
+      const willDelete = await swal({
+        title: "Are you sure?",
+        text: "Are you sure that you want to delete this product ?",
+        icon: "warning",
+        dangerMode: true,
+      });
+      if (willDelete) {
+        swal("Deleted!", "Your imaginary file has been deleted!", "success");
+      }
+    }catch(err){
+      console.log(err)
     }
   };
+
+// ===============quantity==========================
+const handlequantityde=()=>{
+  // setQuantity(quantity-1)
+  // quantity--
+}
+// console.log(quantity)
+const handlequantityin=()=>{
+// setQuantity(quantity+1)
+//   quantity++
+}
   return (
     <>
       <Box mt={{ lg: "40px" }}>
         <Heading>Shopping Cart</Heading>
         <Box
           m={"20px auto"}
-          display={"flex"}
-          w={{ lg: "70%", md: "90%", base: "95%" }}
-          flexDirection={{
-            base: "column",
-            md: "column",
-            lg: "row",
+          display={"grid"}
+          w={{ lg: "80%", md: "90%", base: "95%" }}
+          gridTemplateColumns={{
+            base: "repeat(1,1fr)",
+            md: "repeat(1,1fr)",
+            lg: "repeat(2,70% 28%)",
           }}
+          // borderWidth={'1px'}
           gap={"15px"}
-        >
-          <Box
-            borderWidth={"1px"}
-            display={"flex"}
-            borderRadius={"10px"}
-            flexDirection={{base:"column",lg:"row",md:"row"}}
-            boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
-          >
-            <Box m={{lg:"0",base:'auto',md:'0'}}p={"10px"} w={{ lg: "20%",md:"18%",base:"40%"}} >
-              <Image
-              
-                src={
-                  "https://m.media-amazon.com/images/I/81kDI4r4jkL._AC_UL480_FMwebp_QL65_.jpg"
-                }
-                alt="images"
-              />
-            </Box>
-            <Box ml={"10px"} textAlign={"left"} fontWeight={600}>
-              {" "}
-              <Text fontWeight={600} fontSize={"20px"}>
-                Full Sleeve Blue Solid Women's Denim Jacket
-              </Text>
-              <Text >Marks &amp; Spencer</Text>
-              <Text >women-clothing</Text>
-              <Box pl={{lg:"10px",base:'90px',md:'10px'}}
-                display={"flex"}
-                alignItems={"center"}
-                m={"10px 0"}
-                gap={"10px"}
-              >
-                {" "}
-                <Button>-</Button>
-                <Text>1</Text>
-                <Button>+</Button>
-              </Box>
-              <Box
-              pl={{lg:"10px",base:'100px',md:'10px'}}
-                display={"flex"}
-                alignItems={"center"}
-                m={"10px 0"}
-                gap={"10px"}
-              >
-                {" "}
-                <Text>Rs 305</Text>
-                <Text textDecoration={"line-through"} color={'red.400'}>Rs 509</Text>
-              </Box>
-              <Button ml={{lg:"10px",base:'116px',md:'10px'}} mb={{base:'10px'}} onClick={handledelete}>
-                <RiDeleteBin5Line />
-              </Button>
-            </Box>
-          </Box>
+        
+>
+<Box 
+  display={"flex"}
+  borderRadius={"10px"}
+  flexDirection={{base:"column",lg:"column",md:"column"}}
+  gap={'20px'}
+>
+{cartData.length>0 && cartData.map((el)=>(
+  
+  <Box key={el.id} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
+  display={"flex"}
+  borderRadius={"10px"}
+  flexDirection={{base:"column",lg:"row",md:"row"}}
+ 
+ >
+  <Box m={{lg:"0",base:'auto',md:'0'}}p={"10px"} w={{ lg: "20%",md:"18%",base:"40%"}} >
+    <Image
+    
+      src={el.image}
+      alt="images"
+    />
+  </Box>
+  <Box ml={"10px"} textAlign={"left"} fontWeight={600}>
+    {" "}
+    <Text fontWeight={600} fontSize={"20px"}>
+     {el.name}
+    </Text>
+    <Text >{el.brand}</Text>
+    <Text >{el.category}</Text>
+    <Box pl={{lg:"10px",base:'90px',md:'10px'}}
+      display={"flex"}
+      alignItems={"center"}
+      m={"10px 0"}
+      gap={"10px"}
+    >
+      {" "}
+      <Button onClick={handlequantityde}>-</Button>
+      <Text>{el.quantity}</Text>
+      <Button onClick={handlequantityin}>+</Button>
+    </Box>
+    <Box
+    pl={{lg:"10px",base:'100px',md:'10px'}}
+      display={"flex"}
+      alignItems={"center"}
+      m={"10px 0"}
+      gap={"10px"}
+    >
+      {" "}
+      <Text>Rs {el.price}</Text>
+      <Text textDecoration={"line-through"} color={'red.400'}>Rs {el.original_price}</Text>
+    </Box>
+    <Button ml={{lg:"10px",base:'116px',md:'10px'}} mb={{base:'10px'}} onClick={()=>handleremove(el.id)}>
+      <RiDeleteBin5Line />
+    </Button>
+  </Box>
+</Box>
 
-
+))}
+</Box>
           <Box
           align="center"
           display={'flex'}
@@ -101,6 +144,7 @@ const Cart = () => {
             boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
             p={"10px"}
             borderRadius={"10px"}
+            h={'200px'}
           >
             <Alert
               bgColor={"white"}
@@ -124,10 +168,11 @@ const Cart = () => {
               <Text fontWeight={600}>Rs 786</Text>
             </Flex>
             <Checkbox >This order contains a gift</Checkbox>
-            <Button bgColor={'yellow.400'} w={'100%'} mt="10px">Proceed to Buy</Button>
+            <Button bgColor={'yellow.400'} w={'100%'} mt="10px" onClick={()=>handelcheckout()}>Proceed to Buy</Button>
           </Box>
         </Box>
       </Box>
+
     </>
   );
 };
