@@ -5,18 +5,69 @@ import {
   InputRightElement,
   InputGroup,
   Text,
+  Flex,
 } from "@chakra-ui/react";
 import { BiUserCircle } from "react-icons/bi";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import logo from "../media/pocketstore.png";
 import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import usaIcon from "../media/India.webp";
 import Navbar2 from "./Navbar2";
+import { useThrottle } from "use-throttle";
+
+//import redux functions
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../redux/products/product.actions";
 
 const Navbar1 = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((store) => store.productReducer.products);
+  const [search, setSearch] = useState("");
+  const [suggestions, setSuggestion] = useState([]);
+  const [showSugg, setShowSugg] = useState(false);
+  const throttleText = useThrottle(search, 400);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (search === "") {
+      setSuggestion([]);
+      setShowSugg(false);
+    } else {
+      let newSuggestions = products.filter((item) => {
+        return item?.category
+          ?.split(" ")
+          ?.join("")
+          .trim()
+          .toLowerCase()
+          .indexOf(throttleText) != -1
+          ? true
+          : false;
+      });
+      setSuggestion(newSuggestions);
+      setShowSugg(true);
+    }
+  }, [throttleText]);
+  // console.log("suggestions", suggestions);
+
+  // console.log("pro", products);
+
+  const handleSearchClick = () => {
+    if (search !== "") {
+      let getProductParams = {
+        params: {
+          q: search,
+        },
+      };
+      dispatch(getProducts(getProductParams));
+      navigate(`/search?q=${search}`);
+    }
+    setSearch("");
+    setShowSugg(false);
+  };
+
   return (
     <>
       <Box
@@ -36,7 +87,10 @@ const Navbar1 = () => {
         padding={"5px"}
         zIndex={2}
       >
-        <Box w={{ base: "13%", md: "6%", lg: "3.5%" }} _hover={{borderWidth:"1px"}}>
+        <Box
+          w={{ base: "13%", md: "6%", lg: "3.5%" }}
+          _hover={{ borderWidth: "1px" }}
+        >
           <Link to="/">
             <Image src={logo} alt="" />
           </Link>
@@ -48,6 +102,7 @@ const Navbar1 = () => {
           //  h={{base:"20px"}}
           borderRadius={"5px"}
         >
+          {/* Search bar  */}
           <Input
             h={{ base: "30px", md: "40px", lg: "40px" }}
             border="none"
@@ -55,12 +110,59 @@ const Navbar1 = () => {
             type="text"
             placeholder="Search Amazon.in"
             borderRadius={"5px"}
+            position="relative"
+            value={search}
+            onKeyPress={(e) => (e.key === "Enter" ? handleSearchClick() : null)}
+            onChange={(e) => setSearch(e.target.value)}
           />
+          {/* suggestions */}
+          {showSugg && (
+            <Box
+              w={{ base: "100%", md: "100%", lg: "130%" }}
+              maxW="800px"
+              maxH="400px"
+              textAlign="left"
+              position="absolute"
+              bg="white"
+              padding="5px"
+              pl="10px"
+              lineHeight="35px"
+              top="80%"
+              zIndex="5"
+              overflow="scroll"
+              // maxH="400px"
+            >
+              {suggestions.map((elem, index) => {
+                if (index > 10) {
+                  return;
+                }
+                return (
+                  <Flex
+                    key={elem.id}
+                    onClick={() => {
+                      setShowSugg(false);
+                      navigate(`/products/${elem.id}`);
+                    }}
+                    cursor="pointer"
+                    gap="3px"
+                    alignItems="center"
+                    justifyContent="space-between"
+                  >
+                    <Image w="30px" h="30px" src={elem.image} alt={elem.id} />
+                    <Text width="88%" noOfLines={1}>
+                      {elem.name}
+                    </Text>
+                  </Flex>
+                );
+              })}
+            </Box>
+          )}
           <InputRightElement
             borderRadius={"0px 5px 5px 0px"}
             h={"full"}
             m={"0 0px"}
             bg={"#febd69"}
+            onClick={() => handleSearchClick()}
           >
             <SearchIcon />
           </InputRightElement>
@@ -78,7 +180,7 @@ const Navbar1 = () => {
           gap={"55px"}
           fontSize={"15px"}
         >
-          <Link to="/login"  _hover={{borderWidth:"1px"}}>
+          <Link to="/login" _hover={{ borderWidth: "1px" }}>
             <BiUserCircle fontSize={"25px"} />{" "}
             <Text fontSize={"10px"}>Sign in</Text>
           </Link>
@@ -92,13 +194,12 @@ const Navbar1 = () => {
           alignItems={"center"}
           gap={{ md: "20px", base: "10px" }}
         >
-          <Link to='/cart'>
+          <Link to="/cart">
             <HiOutlineShoppingCart fontSize={"30px"} />
           </Link>
-         
         </Box>
       </Box>
-      <Navbar2/>
+      <Navbar2 />
     </>
   );
 };

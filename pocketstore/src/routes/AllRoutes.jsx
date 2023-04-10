@@ -12,6 +12,7 @@ import Adminallproducts from "../admin/adminallproducts";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import Cart from "../pages/cart/Cart";
 import CheckOut from "../pages/Checkout/CheckOut";
+import Search from "../pages/Search/Search";
 
 // landing fix
 
@@ -21,14 +22,15 @@ const AllRoutes = () => {
       <Route path="/" element={<Homepage />} />
       <Route path="/products" element={<ProductPage />} />
       <Route path="/products/:id" element={<ProductDetails />} />
-      <Route path="/cart" element={<Cart/>} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/cart" element={<Cart />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/adminlogin" element={<SplitScreen />} />
       <Route path="/Orders" element={<Splitscree />} />
       <Route path="/Add Products" element={<Adminaddpro />} />
       <Route path="/adminallprod" element={<Adminallproducts />} />
-      <Route path='/checkout' element={<CheckOut/>}/>
+      <Route path="/checkout" element={<CheckOut />} />
     </Routes>
   );
 };
