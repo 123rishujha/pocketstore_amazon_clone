@@ -6,7 +6,8 @@ import {
   Text,
   GridItem,
   Image,
-  Tag
+  Tag,
+  Button
 } from "@chakra-ui/react";
 
 import { useNavigate } from "react-router-dom";
@@ -31,21 +32,17 @@ function ProductCard({
   return (
     <GridItem
       key={id}
-      onClick={() => handleNavigate(id)}
+     
       className={Styles.gridItem}
+      cursor={"pointer"}
     >
-      <Image className={Styles.gridItem_image} src={image} alt={name} />
+      <Image className={Styles.gridItem_image} src={image} onClick={() => handleNavigate(id)} alt={name} />
       <Flex className={Styles.details}>
-        <Text noOfLines={1}>{name}</Text>
+        <Text noOfLines={1} fontWeight={500}>{name}</Text>
         <Badge
-          // w="50%"
-          // display='flex'
-          // justifyContent='center'
-          // alignItems='center'
-          // borderRadius={"0px"}
-          // padding="5px"
           colorScheme={"red"}
           size={"sm"}
+          m="5px 0"
         >
           Up to {discount}% off
         </Badge>
@@ -56,6 +53,7 @@ function ProductCard({
           </span>
         </Text>
       </Flex>
+      <Button color={'white'} mb={'5px'}  bgColor={"orange.300"} _hover={{bgColor:"orange.400"}}>Add to Cart</Button>
     </GridItem>
   );
 }

@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { BiUserCircle } from "react-icons/bi";
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import logo from "../media/pocketstore.png";
 import { SearchIcon} from "@chakra-ui/icons";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
@@ -181,14 +181,13 @@ const Navbar1 = () => {
         >
           <Box className={style.sign}>
           <Link to="/login"  _hover={{borderWidth:"1px"}} >
-            <BiUserCircle fontSize={"25px"} />
-          <Link to="/login" _hover={{ borderWidth: "1px" }}>
             <BiUserCircle fontSize={"25px"} />{" "}
             <Text fontSize={"10px"}>Sign in</Text>
             
           </Link>
           <Box className={style.log} ><Text color={"black"}>Logout</Text></Box>
           </Box>
+
           <Link to="/adminlogin">
             <MdOutlineAdminPanelSettings fontSize={"25px"} />
             <Text fontSize={"10px"}>Admin</Text>

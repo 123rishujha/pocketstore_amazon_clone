@@ -13,34 +13,34 @@ function LoadingSkeleton() {
       gap="10px"
       className={Styles.grid}
     >
-      <GridItem height="300px">
+      <GridItem height="450px">
         <Skeleton h="100%" w="100%" />
       </GridItem>
-      <GridItem height="300px">
+      <GridItem height="450px">
         <Skeleton h="100%" w="100%" />
       </GridItem>
-      <GridItem height="300px">
+      <GridItem height="450px">
         <Skeleton h="100%" w="100%" />
       </GridItem>
-      <GridItem height="300px">
+      <GridItem height="450px">
         <Skeleton h="100%" w="100%" />
       </GridItem>
-      <GridItem height="300px">
+      <GridItem height="450px">
         <Skeleton h="100%" w="100%" />
       </GridItem>
-      <GridItem height="300px">
+      <GridItem height="450px">
         <Skeleton h="100%" w="100%" />
       </GridItem>
-      <GridItem height="300px">
+      <GridItem height="450px">
         <Skeleton h="100%" w="100%" />
       </GridItem>
-      <GridItem height="300px">
+      <GridItem height="450px">
         <Skeleton h="100%" w="100%" />
       </GridItem>
-      <GridItem height="300px">
+      <GridItem height="450px">
         <Skeleton h="100%" w="100%" />
       </GridItem>
-      <GridItem height="300px">
+      <GridItem height="450px">
         <Skeleton h="100%" w="100%" />
       </GridItem>
     </Grid>

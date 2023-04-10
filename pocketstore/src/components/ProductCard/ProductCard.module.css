@@ -1,7 +1,7 @@
 .gridItem {
   border: 0.1px solid rgba(128, 128, 128, 0.706);
   /* border: 0.1px solid red; */
-  height: 330px;
+  height: 450px;
   object-fit: contain;
   padding: 5px;
   display: flex;
@@ -9,13 +9,15 @@
   justify-content: center;
   margin-top: 0px;
   background-color: white;
+  border-radius: 5px;
 }
 
 .gridItem_image {
   /* border-radius: 50%; */
   height: 70%;
-  width: 90%;
+  width: 100%;
   margin: auto;
+  border-radius: 3px 3px 0 0;
 }
 
 .gridItem .details {
@@ -26,4 +28,5 @@
   align-items: flex-start;
   text-align: left;
   padding-inline: 10px;
+
 }
