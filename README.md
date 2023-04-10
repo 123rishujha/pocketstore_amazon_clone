@@ -12,14 +12,22 @@ This  is an e-commerce website.where we can buy clothing,mobile,loptop and other
 
 Deployed Link-
 
-<h1>Tech Stacks</h1>
+<h1>Tech Stacks (Frontend)</h1>
 React<br>
 Redux-Thunk<br>
 Redux<br>
-JavaScript<br>
 HTML<br>
 CSS<br>
 Chakra UI<br>
+
+<h1>Tech Stacks (Backend)</h1>
+Express<br>
+Mongosse<br>
+Josnwebtoken<br>
+Bcrypt<br>
+Cors<br>
+
+
 
 <h1 align ="center">Home Page</h1>
 
