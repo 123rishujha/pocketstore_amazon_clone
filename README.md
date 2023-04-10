@@ -23,5 +23,12 @@ Chakra UI<br>
 
 <h1 align ="center">Home Page</h1>
 
-image.png
-<img src={image.png} alt="homepage/>
+<h1 align="center">Sign Up Page</h1>
+
+<h1 align ="center">Products Page</h1>
+
+<h1 align ="center">Details page</h1>
+
+<h1 align ="center">Cart Page</h1>
+
+<h1 align ="center">Admin Page</h1>
