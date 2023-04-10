@@ -22,25 +22,35 @@ CSS<br>
 Chakra UI<br>
 
 <h1 align ="center">Home Page</h1>
-![HomePage](https://user-images.githubusercontent.com/107981893/231013113-fda7e30a-906e-48ad-963e-4c6f0ff7768a.png)
+
+![HomePage](https://user-images.githubusercontent.com/107981893/231015267-eec7a44f-ce8b-4f0f-868e-87ef94ebd9f3.png)
 
 <h1 align="center">Sign Up Page</h1>
-![signUp](https://user-images.githubusercontent.com/107981893/231014571-a5bf0ab5-63c1-41ad-8633-aedb2eb59992.png)
+
+![signUp](https://user-images.githubusercontent.com/107981893/231015334-149d16c9-f57d-42b6-aad8-316bf1d1b90c.png)
 
 <h1 align="center">Sign In Page</h1>
-![loginPage](https://user-images.githubusercontent.com/107981893/231014584-73fbd8c1-f87d-4ec0-b72c-9744850cb4f3.png)
+
+![loginPage](https://user-images.githubusercontent.com/107981893/231017122-17c30174-bd2f-4b51-8931-3c185685550a.png)
 
 <h1 align ="center">Products Page</h1>
-![productsPage](https://user-images.githubusercontent.com/107981893/231014597-c7ab4545-8cb1-4901-9aaa-67b26cf5e72f.png)
+
+![productsPage](https://user-images.githubusercontent.com/107981893/231017197-20ff35c1-0691-4cab-852d-3ef013d47f55.png)
 
 <h1 align ="center">Details page</h1>
-![detailPage](https://user-images.githubusercontent.com/107981893/231014613-6e6df41c-833d-4e53-b783-ee51fb3f9e9c.png)
+
+![detailPage](https://user-images.githubusercontent.com/107981893/231017285-7bdcad23-d534-4f16-a332-2e82a7f22468.png)
 
 <h1 align ="center">Cart Page</h1>
-![cartPage](https://user-images.githubusercontent.com/107981893/231014620-3726f002-964c-4028-b332-03edca162a27.png)
+
+![cartPage](https://user-images.githubusercontent.com/107981893/231017311-89bf5224-934b-4b37-81b3-8f552a4a4347.png)
 
 <h1 align ="center">Checkout Page</h1>
-![CheakoutPage](https://user-images.githubusercontent.com/107981893/231014626-595b3b39-6789-4bf4-963b-cb6d2c7f1297.png)
+
+![CheakoutPage](https://user-images.githubusercontent.com/107981893/231017344-937676b5-b9c5-4f41-a4a8-48e43ff8b7c4.png)
 
 <h1 align ="center">Admin Page</h1>
-![adminPage](https://user-images.githubusercontent.com/107981893/231014631-3c97e74b-b7f9-4de6-977d-d9ac724852e9.png)
+
+![adminPage](https://user-images.githubusercontent.com/107981893/231017353-9f0eeb8b-8497-45c6-a4a5-960064fcc297.png)
+
+
