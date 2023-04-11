@@ -15,6 +15,7 @@ import CheckOut from "../pages/Checkout/CheckOut";
 import Search from "../pages/Search/Search";
 import Payment from "../pages/payment/Payment";
 import PageNotfound from "../pages/PageNot";
+import PrivateRoute from './PrivateRoute';
 
 // landing fix
 
@@ -23,17 +24,17 @@ const AllRoutes = () => {
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/products" element={<ProductPage />} />
-      <Route path="/products/:id" element={<ProductDetails />} />
+      <Route path="/products/:id" element={<PrivateRoute><ProductDetails /> </PrivateRoute>} />
       <Route path="/search" element={<Search />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/cart" element={<PrivateRoute><Cart /> </PrivateRoute>} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/adminlogin" element={<SplitScreen />} />
       <Route path="/Orders" element={<Splitscree />} />
       <Route path="/Add Products" element={<Adminaddpro />} />
       <Route path="/adminallprod" element={<Adminallproducts />} />
-      <Route path="/checkout" element={<CheckOut />} />
-      <Route path="/payment" element={<Payment/>}/>
+      <Route path="/checkout" element={<PrivateRoute><CheckOut /></PrivateRoute>} />
+      <Route path="/payment" element={<PrivateRoute><Payment/></PrivateRoute>}/>
       <Route path="*" element={<PageNotfound/>}/>
     </Routes>
   );

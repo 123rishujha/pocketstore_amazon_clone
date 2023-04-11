@@ -39,12 +39,12 @@ function Homepage() {
       <div
         style={{
           marginTop: "20px",
-          height: "300px",
-          border: "1px solid red",
-          background: "red",
+          height: "5px",
+          // border: "1px solid red",
+          background: "gray",
         }}
       >
-        <h1>Don't remove it</h1>
+        {/* <h1>Don't remove it</h1> */}
       </div>
     </div>
   );
