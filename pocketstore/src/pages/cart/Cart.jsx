@@ -9,6 +9,7 @@ import {
   Alert,
   Flex,
   Checkbox 
+  ,useToast
 } from "@chakra-ui/react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import swal from "sweetalert";
@@ -17,19 +18,37 @@ import { useEffect, useState } from "react";
 import { appendCart, deletedata } from "../../redux/cart/cart.action";
 import axios from "axios";
 import {useNavigate } from "react-router-dom";
+import Empty from "./Empty";
 
 const Cart = () => {
 const dispatch=useDispatch();
 const [quantity,setQuantity]=useState(1)
 const {cartData}=useSelector((store)=>store.cartReducers)
 const navigate=useNavigate();
+const toast=useToast()
+
+let Total = cartData?.reduce((acc, el)=>acc+el.price, 0)
+
+let count=cartData?.length
+// console.log(count)
 useEffect(()=>{
 dispatch(appendCart())
+
 
 },[dispatch])
 console.log(cartData);
 const handelcheckout=()=>{
+  if(cartData.length===0){
+    toast({
+      title: "cart empty .",
+      status: "error",
+      duration: 9000,
+      isClosable: true,
+    });
+  }else{
   navigate("/checkout")
+  }
+  
 }
 
   const handleremove = async (id) => {
@@ -85,7 +104,7 @@ setQuantity(quantity+1)
   flexDirection={{base:"column",lg:"column",md:"column"}}
   gap={'20px'}
 >
-{cartData.length>0 && cartData.map((el)=>(
+{cartData.length===0?<Empty/> :cartData.map((el)=>(
   
   <Box key={el.id} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
   display={"flex"}
@@ -126,8 +145,8 @@ setQuantity(quantity+1)
       gap={"10px"}
     >
       {" "}
-      <Text>Rs {el.price}</Text>
-      <Text textDecoration={"line-through"} color={'red.400'}>Rs {el.original_price}</Text>
+      <Text>₹ {el.price}</Text>
+      <Text textDecoration={"line-through"} color={'red.400'}>₹ {el.original_price}</Text>
     </Box>
     <Button ml={{lg:"10px",base:'116px',md:'10px'}} mb={{base:'10px'}} onClick={()=>handleremove(el.id)}>
       <RiDeleteBin5Line />
@@ -163,9 +182,9 @@ setQuantity(quantity+1)
             </Text>
             <Flex gap="10px" m="10px 30px 0 " align={"center"}>
               <Text fontWeight={700} fontSize={"20px"}>
-                Subtotal(2 items):
+                Subtotal({count}items):
               </Text>
-              <Text fontWeight={600}>Rs 786</Text>
+              <Text fontWeight={600}>₹{Total}</Text>
             </Flex>
             <Checkbox >This order contains a gift</Checkbox>
             <Button bgColor={'yellow.400'} w={'100%'} mt="10px" onClick={()=>handelcheckout()}>Proceed to Buy</Button>

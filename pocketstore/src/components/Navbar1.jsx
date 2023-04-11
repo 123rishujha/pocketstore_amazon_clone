@@ -29,6 +29,7 @@ const Navbar1 = () => {
   const [showSugg, setShowSugg] = useState(false);
   const throttleText = useThrottle(search, 400);
   const navigate = useNavigate();
+  const [token, setToken] = useState(localStorage.getItem("item"))
 
   useEffect(() => {
     if (search === "") {
@@ -41,17 +42,21 @@ const Navbar1 = () => {
           ?.join("")
           .trim()
           .toLowerCase()
-          .indexOf(throttleText) != -1
+          .indexOf(throttleText) !== -1
           ? true
           : false;
       });
       setSuggestion(newSuggestions);
       setShowSugg(true);
     }
-  }, [throttleText]);
-  // console.log("suggestions", suggestions);
+    let Token = localStorage.getItem("item")
+    setToken(Token)
+  }, [throttleText, token]);
 
-  // console.log("pro", products);
+  const handleToggle=()=>{
+    // console.log(localStorage.removeItem("item"))
+    setToken(localStorage.removeItem("item"))
+  }
 
   const handleSearchClick = () => {
     if (search !== "") {
@@ -133,7 +138,7 @@ const Navbar1 = () => {
             >
               {suggestions.map((elem, index) => {
                 if (index > 10) {
-                  return;
+                  return
                 }
                 return (
                   <Flex
@@ -182,10 +187,10 @@ const Navbar1 = () => {
           <Box className={style.sign}>
           <Link to="/login"  _hover={{borderWidth:"1px"}} >
             <BiUserCircle fontSize={"25px"} />{" "}
-            <Text fontSize={"10px"}>Sign in</Text>
+            <Text fontSize={"10px"}>SignIn</Text>
             
           </Link>
-          <Box className={style.log} ><Text color={"black"}>Logout</Text></Box>
+          <Box className={style.log} ><Text color={"black"} cursor={"pointer"} onClick={()=>handleToggle()}>{token!==undefined?"Hi User/Logout":"SignIn"}</Text></Box>
           </Box>
 
           <Link to="/adminlogin">

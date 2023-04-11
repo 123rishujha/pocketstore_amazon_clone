@@ -14,9 +14,9 @@ function App() {
       ) : window.location.pathname === "/signup" ? (
         <></>
       ) : (
-        <Navbar1 />
+      <Navbar1 />
       )}
-
+   
       <AllRoutes />
       <Footer />
     </div>

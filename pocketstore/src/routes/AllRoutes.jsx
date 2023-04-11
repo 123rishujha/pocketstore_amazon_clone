@@ -13,6 +13,8 @@ import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import Cart from "../pages/cart/Cart";
 import CheckOut from "../pages/Checkout/CheckOut";
 import Search from "../pages/Search/Search";
+import Payment from "../pages/payment/Payment";
+import PageNotfound from "../pages/PageNot";
 
 // landing fix
 
@@ -31,6 +33,8 @@ const AllRoutes = () => {
       <Route path="/Add Products" element={<Adminaddpro />} />
       <Route path="/adminallprod" element={<Adminallproducts />} />
       <Route path="/checkout" element={<CheckOut />} />
+      <Route path="/payment" element={<Payment/>}/>
+      <Route path="*" element={<PageNotfound/>}/>
     </Routes>
   );
 };

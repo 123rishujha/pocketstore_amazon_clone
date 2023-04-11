@@ -11,7 +11,6 @@ import {
   Text,
   Heading,
 } from "@chakra-ui/react";
-
 import { getProducts } from "../../redux/products/product.actions";
 import { useNavigate, useParams } from "react-router-dom";
 import Styles from "./ProductDetails.module.css";
@@ -23,9 +22,7 @@ const ProductDetails = () => {
   console.log(id);
   const dispatch = useDispatch();
   const products = useSelector((store) => store.productReducer.products);
-  // console.log(products);
   const data = products?.find((elem) => elem.id === Number(id));
-  // const [qtn, setQtn] = React.useState(data?.quantity);
   const toast = useToast();
 
   const handlecart = () => {
@@ -35,7 +32,6 @@ const ProductDetails = () => {
         console.log(data);
         toast({
           title: "item has added to cart.",
-          // description: "We've created your account for you.",
           status: "success",
           duration: 9000,
           isClosable: true,
@@ -45,7 +41,6 @@ const ProductDetails = () => {
         console.log(err);
         toast({
           title: "item has added to cart.",
-          // description: "We've created your account for you.",
           status: "success",
           duration: 9000,
           isClosable: true,
