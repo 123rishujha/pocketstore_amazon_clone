@@ -120,7 +120,7 @@ const Navbar1 = () => {
             onChange={(e) => setSearch(e.target.value)}
           />
           {/* suggestions */}
-          {showSugg && (
+          {showSugg && suggestions.length != 0 && (
             <Box
               w={{ base: "100%", md: "100%", lg: "130%" }}
               maxW="800px"
@@ -195,7 +195,7 @@ const Navbar1 = () => {
                 cursor={"pointer"}
                 onClick={() => handleToggle()}
               >
-                {localStorage.getItem("item") ?  "HI User/Logout" : "SignIn"}
+                {localStorage.getItem("item") ? "HI User/Logout" : "SignIn"}
               </Text>
             </Box>
           </Box>
