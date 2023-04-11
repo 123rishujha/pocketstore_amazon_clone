@@ -10,7 +10,7 @@ This  is an e-commerce website.where we can buy clothing,mobile,loptop and other
 4.Parag Sonje<br>
 5.Mohd Waseem khan<br>
 
-Deployed Link-pocketstore-123rishujha.vercel.app/
+Deployed Link-pocketstore- <a>https://pocketstore.vercel.app</a>
 
 <h1>Tech Stacks (Frontend)</h1>
 React<br>
