@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import {
   Box,
+  Text,
   Image,
-  FormLabel,
   Input,
+  Center,
   Button,
   Heading,
-  FormControl,
-  Text,
-  Center,
+  FormLabel,
   InputGroup,
+  FormControl,
   InputRightElement,
 } from "@chakra-ui/react";
 import "./signup.css";
@@ -25,7 +25,7 @@ const Login = () => {
   const handleClick = () => setShow(!show);
   const navigate = useNavigate();
   const location = useLocation();
-  const commingFrom = location.state.data || "/";
+  const commingFrom = location?.state?.data || "/";
   // console.log("commingfrom",commingFrom);
 
   const handlelogin = async (e) => {
