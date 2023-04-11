@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import {Grid} from "@chakra-ui/react";
 
 import Styles from "./ListProducts.module.css";
 
