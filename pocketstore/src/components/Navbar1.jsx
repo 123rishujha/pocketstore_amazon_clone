@@ -9,14 +9,14 @@ import {
 } from "@chakra-ui/react";
 import { BiUserCircle } from "react-icons/bi";
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../media/pocketstore.png";
-import { SearchIcon} from "@chakra-ui/icons";
+import { SearchIcon } from "@chakra-ui/icons";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import usaIcon from "../media/India.webp";
 import Navbar2 from "./Navbar2";
-import style from "./navbar.module.css"
+import style from "./navbar.module.css";
 import { useThrottle } from "use-throttle";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../redux/products/product.actions";
@@ -29,7 +29,7 @@ const Navbar1 = () => {
   const [showSugg, setShowSugg] = useState(false);
   const throttleText = useThrottle(search, 400);
   const navigate = useNavigate();
-  const [token, setToken] = useState(localStorage.getItem("item"))
+  const [token, setToken] = useState(localStorage.getItem("item"));
 
   useEffect(() => {
     if (search === "") {
@@ -49,14 +49,14 @@ const Navbar1 = () => {
       setSuggestion(newSuggestions);
       setShowSugg(true);
     }
-    let Token = localStorage.getItem("item")
-    setToken(Token)
+    let Token = localStorage.getItem("item");
+    setToken(Token);
   }, [throttleText, token]);
 
-  const handleToggle=()=>{
+  const handleToggle = () => {
     // console.log(localStorage.removeItem("item"))
-    setToken(localStorage.removeItem("item"))
-  }
+    setToken(localStorage.removeItem("item"));
+  };
 
   const handleSearchClick = () => {
     if (search !== "") {
@@ -138,7 +138,7 @@ const Navbar1 = () => {
             >
               {suggestions.map((elem, index) => {
                 if (index > 10) {
-                  return
+                  return;
                 }
                 return (
                   <Flex
@@ -185,12 +185,19 @@ const Navbar1 = () => {
           fontSize={"15px"}
         >
           <Box className={style.sign}>
-          <Link to="/login"  _hover={{borderWidth:"1px"}} >
-            <BiUserCircle fontSize={"25px"} />{" "}
-            <Text fontSize={"10px"}>SignIn</Text>
-            
-          </Link>
-          <Box className={style.log} ><Text color={"black"} cursor={"pointer"} onClick={()=>handleToggle()}>{token!==undefined?"Hi User/Logout":"SignIn"}</Text></Box>
+            <Link to="/login" _hover={{ borderWidth: "1px" }}>
+              <BiUserCircle fontSize={"25px"} />{" "}
+              <Text fontSize={"10px"}>SignIn</Text>
+            </Link>
+            <Box className={style.log}>
+              <Text
+                color={"black"}
+                cursor={"pointer"}
+                onClick={() => handleToggle()}
+              >
+                {localStorage.getItem("item") ?  "HI User/Logout" : "SignIn"}
+              </Text>
+            </Box>
           </Box>
 
           <Link to="/adminlogin">

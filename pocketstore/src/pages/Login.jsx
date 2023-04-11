@@ -16,7 +16,7 @@ import "./signup.css";
 import axios from "axios";
 import img1 from "../assets/website-logo.png";
 import { useToast } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate ,useLocation} from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,24 +24,25 @@ const Login = () => {
   const toast = useToast();
   const handleClick = () => setShow(!show);
   const navigate = useNavigate();
+  const location = useLocation();
+  const commingFrom = location.state.data || "/";
+  // console.log("commingfrom",commingFrom);
 
   const handlelogin = async (e) => {
     e.preventDefault();
     let payload = { email, password };
     try {
-      await axios
-        .post(`https://black-mussel-fez.cyclic.app/user/login`, payload)
-        .then((res) => {
-          navigate("/");
+      let res = await axios.post(`https://black-mussel-fez.cyclic.app/user/login`, payload)
+      console.log(res.data)
+      localStorage.setItem("item",JSON.stringify(res.data.token))
+      navigate(commingFrom);
           toast({
             title: "Login Successful!.",
             status: "success",
             duration: 2000,
             isClosable: true,
           });
-          console.log(res.data)
-          localStorage.setItem("item",JSON.stringify(res.data.token))
-        });
+   
     } catch (err) {
       console.log(err);
       toast({
